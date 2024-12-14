@@ -1,9 +1,7 @@
 {-# LANGUAGE DataKinds #-}
-module SpaceWireStateMachine where
 
 import ReWire 
 import ReWire.Bits 
-
 
 ------------------------------------------------------------
 -- Machine states, register file, and input and output types
@@ -121,9 +119,9 @@ tst <?> x = if tst then x else return ()
 
 {-# INLINE (<??>) #-}
 (<??>) :: (Reg -> Bit) -> M () -> M ()
-reg <??> x = do
-               rf <- get
-               if reg rf then x else return ()
+r <??> x = do
+             rf <- get
+             if r rf then x else return ()
 
 ------------------------------------------------------------
 -- State machine dispatcher:
